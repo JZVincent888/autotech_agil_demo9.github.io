@@ -47,12 +47,12 @@
 <body>
 
 
-<section class="hero">
+<!-- <section class="hero">
     <div class="hero-body">
         <div class="container is-max-desktop">
             <div class="columns is-centered">
                 <div class="column has-text-centered">
-                    <h1 class="title is-4 publication-title">AUTOtech.agil Demonstration 9: Digital Twins</h1>
+                    <h1 class="title is-4 publication-title">AUTOtech.agil Demonstration 9: Test Fields</h1>
                     <div class="is-size-5 publication-authors">
                             <span class="author-block"><a href="https://www.ce.cit.tum.de/air/research/autotechagil/"
                                                           target="_blank">TUM-AIR</a>,</span>
@@ -64,7 +64,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 
 <section class="hero is-small">
@@ -72,7 +72,7 @@
         <div class="container">
 
             <!-- Buttons to select video -->
-            <div class="buttons has-text-centered">
+            <div class="buttons has-text-centered" style="display: flex; justify-content: center; gap: 10px;">
                 <button id="btn-tum-air" class="button is-primary">TUM-AIR</button>
                 <button id="btn-uulm-mrm" class="button is-link">UULM-MRM</button>
                 <button id="btn-rwth-ika" class="button is-success">RWTH-IKA</button>
@@ -85,7 +85,7 @@
                     Your browser does not support the video tag.
                 </video>
                 <h2 id="video-title" class="subtitle has-text-centered" style="margin-top: 10px;">
-                    Visualization of the digital twin of TUM-AIR.
+                    Visualization of the TUM-AIR test field in Garching bei München.
                 </h2>
             </div>
 
@@ -96,15 +96,24 @@
 <script>
     // JavaScript to handle button clicks
     document.getElementById('btn-tum-air').addEventListener('click', function () {
-        updateVideo("static/videos/2_output.mp4", "Visualization of the digital twin of TUM-AIR.");
+        updateVideo(
+            "static/videos/2_output.mp4", 
+            "Visualization of the <a href='https://www.ce.cit.tum.de/air/research/autotechagil/' target='_blank'>TUM-AIR</a> test field in Garching bei München: https://innovation-mobility.com/projekt-providentia/."
+        );
     });
 
     document.getElementById('btn-uulm-mrm').addEventListener('click', function () {
-        updateVideo("static/videos/0_output.mp4", "Visualization of the digital twin of UULM-MRM.");
+        updateVideo(
+            "static/videos/0_output.mp4", 
+            "Visualization of the <a href='https://www.uni-ulm.de/in/mrm/forschungfrastruktur/vis/' target='_blank'>UULM-MRM</a> test field in ULM."
+        );
     });
 
     document.getElementById('btn-rwth-ika').addEventListener('click', function () {
-        updateVideo("static/videos/1_output.mp4", "Visualization of the digital twin of RWTH-IKA.");
+        updateVideo(
+            "static/videos/1_output.mp4", 
+            "Visualization of the <a href='https://www.ika.rwth-aachen.de/de/kompetenzen/projekte/automatisiertes-fahren/autotech-agil.html' target='_blank'>RWTH-IKA</a> test field in Aachen."
+        );
     });
 
     // Function to update video source and title
@@ -115,9 +124,60 @@
 
         source.src = src;
         video.load(); // Reload video with the new source
-        videoTitle.textContent = title;
+        videoTitle.innerHTML = title; // Use innerHTML to support HTML in the title
     }
 </script>
+
+<!-- <section class="hero is-small">
+    <div class="hero-body">
+        <div class="container">
+
+            <div class="buttons has-text-centered">
+                <button id="btn-tum-air" class="button is-primary">TUM-AIR</button>
+                <button id="btn-uulm-mrm" class="button is-link">UULM-MRM</button>
+                <button id="btn-rwth-ika" class="button is-success">RWTH-IKA</button>
+            </div>
+
+            <div id="stream-container" class="has-text-centered" style="margin-top: 20px;">
+                <iframe id="rviz-stream" 
+                        src="http://localhost:8080/stream_tum_air" 
+                        frameborder="0" 
+                        allowfullscreen 
+                        style="width: 100%; height: 500px; max-width: 800px;">
+                </iframe>
+                <h2 id="stream-title" class="subtitle has-text-centered" style="margin-top: 10px;">
+                    Live RViz visualization: TUM-AIR.
+                </h2>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    // JavaScript to handle button clicks
+    document.getElementById('btn-tum-air').addEventListener('click', function () {
+        updateStream("http://localhost:8080/stream_tum_air", "Live RViz visualization: TUM-AIR.");
+    });
+
+    document.getElementById('btn-uulm-mrm').addEventListener('click', function () {
+        updateStream("http://localhost:8080/stream_uulm_mrm", "Live RViz visualization: UULM-MRM.");
+    });
+
+    document.getElementById('btn-rwth-ika').addEventListener('click', function () {
+        updateStream("http://localhost:8080/stream_rwth_ika", "Live RViz visualization: RWTH-IKA.");
+    });
+
+    // Function to update the stream source and title
+    function updateStream(src, title) {
+        const iframe = document.getElementById('rviz-stream');
+        const streamTitle = document.getElementById('stream-title');
+
+        iframe.src = src; // Update the iframe's source URL
+        streamTitle.textContent = title;
+    }
+</script> -->
+
 
 <!-- Sensor setup  -->
 <!-- <section class="section hero is-light">
