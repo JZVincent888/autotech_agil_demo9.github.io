@@ -47,29 +47,40 @@
 <body>
 
 
-<!-- <section class="hero">
+<section class="hero">
     <div class="hero-body">
         <div class="container is-max-desktop">
             <div class="columns is-centered">
                 <div class="column has-text-centered">
                     <h1 class="title is-4 publication-title">AUTOtech.agil Demonstration 9: Test Fields</h1>
-                    <div class="is-size-5 publication-authors">
+                    <!-- <div class="is-size-5 publication-authors">
                             <span class="author-block"><a href="https://www.ce.cit.tum.de/air/research/autotechagil/"
                                                           target="_blank">TUM-AIR</a>,</span>
                         <span class="author-block"><a href="https://www.uni-ulm.de/in/mrm/forschungfrastruktur/vis/"
                                                       target="_blank">UULM-MRM</a>,</span>
                         <span class="author-block"><a href="https://www.ika.rwth-aachen.de/de/kompetenzen/projekte/automatisiertes-fahren/autotech-agil.html" target="_blank">RWTH-IKA</a><br>
+                    </div> -->
+                    <div class="logo-images" style="display: flex; gap: 10px;">
+                        <img src="static/images/autotech_agil.png" alt="Logo 1" style="width: 100px; height: auto;">
+                        <img src="static/images/BMBF.png" alt="Logo 2" style="width: 100px; height: auto;">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section> -->
+</section>
 
 
 <section class="hero is-small">
     <div class="hero-body">
         <div class="container">
+
+            <!-- Image Gallery -->
+            <div class="logo-row" style="margin-top: 20px; display: flex; justify-content: center; gap: 10px;">
+                <img src="static/images/tum.png" alt="Logo 3" style="width: 100px; height: auto;">
+                <img src="static/images/ulm.png" alt="Logo 4" style="width: 100px; height: auto;">
+                <img src="static/images/rwth.png" alt="Logo 5" style="width: 100px; height: auto;">
+            </div>
 
             <!-- Buttons to select video -->
             <div class="buttons has-text-centered" style="display: flex; justify-content: center; gap: 10px;">
@@ -98,14 +109,14 @@
     document.getElementById('btn-tum-air').addEventListener('click', function () {
         updateVideo(
             "static/videos/2_output.mp4", 
-            "Visualization of the <a href='https://www.ce.cit.tum.de/air/research/autotechagil/' target='_blank'>TUM-AIR</a> test field in Garching bei München: https://innovation-mobility.com/projekt-providentia/."
+            "Visualization of the <a href='https://www.ce.cit.tum.de/air/research/autotechagil/' target='_blank'>TUM-AIR</a> test field in Garching bei München: <a href='https://innovation-mobility.com/projekt-providentia/' target='_blank'></a>."
         );
     });
 
     document.getElementById('btn-uulm-mrm').addEventListener('click', function () {
         updateVideo(
             "static/videos/0_output.mp4", 
-            "Visualization of the <a href='https://www.uni-ulm.de/in/mrm/forschungfrastruktur/vis/' target='_blank'>UULM-MRM</a> test field in ULM."
+            "Visualization of the <a href='https://www.uni-ulm.de/in/mrm/forschungfrastruktur/vis/' target='_blank'>UULM-MRM</a> test field in Ulm."
         );
     });
 
