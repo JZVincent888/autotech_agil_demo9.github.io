@@ -70,52 +70,57 @@
 <section class="hero is-small">
     <div class="hero-body">
         <div class="container">
-            <div id="results-carousel" class="carousel results-carousel"> 
 
-                <!-- First Carousel Item -->
-                <div class="item item-video1">
-                    &nbsp;
-                    <video controls class="video-responsive">
-                        <source src="tatic/videos/snow_output.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <h2 class="subtitle has-text-centered">
-                        Visualizations of the digital twin of TUM-AIR.
-                    </h2>
-                </div>
-
-                <!-- Second Carousel Item -->
-                <div class="item item-video2">
-                    &nbsp;
-                    <video controls class="video-responsive">
-                        <source src="static/videos/0_output.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <h2 class="subtitle has-text-centered">
-                        Visualizations of the digital twin of UULM-MRM.
-                    </h2>
-                </div>
-
-                <!-- Third Carousel Item -->
-                <div class="item item-video2">
-                    &nbsp;
-                    <video controls class="video-responsive">
-                        <source src="static/videos/1_output.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <h2 class="subtitle has-text-centered">
-                        Visualizations of the digital twin of RWTH-IKA.
-                    </h2>
-                </div>
-
+            <!-- Buttons to select video -->
+            <div class="buttons has-text-centered">
+                <button id="btn-tum-air" class="button is-primary">TUM-AIR</button>
+                <button id="btn-uulm-mrm" class="button is-link">UULM-MRM</button>
+                <button id="btn-rwth-ika" class="button is-success">RWTH-IKA</button>
             </div>
+
+            <!-- Video display area -->
+            <div id="video-container" class="has-text-centered" style="margin-top: 20px;">
+                <video id="main-video" controls class="video-responsive" style="max-width: 100%; height: auto;">
+                    <source id="video-source" src="static/videos/2_output.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h2 id="video-title" class="subtitle has-text-centered" style="margin-top: 10px;">
+                    Visualization of the digital twin of TUM-AIR.
+                </h2>
+            </div>
+
         </div>
     </div>
 </section>
 
+<script>
+    // JavaScript to handle button clicks
+    document.getElementById('btn-tum-air').addEventListener('click', function () {
+        updateVideo("static/videos/2_output.mp4", "Visualization of the digital twin of TUM-AIR.");
+    });
+
+    document.getElementById('btn-uulm-mrm').addEventListener('click', function () {
+        updateVideo("static/videos/0_output.mp4", "Visualization of the digital twin of UULM-MRM.");
+    });
+
+    document.getElementById('btn-rwth-ika').addEventListener('click', function () {
+        updateVideo("static/videos/1_output.mp4", "Visualization of the digital twin of RWTH-IKA.");
+    });
+
+    // Function to update video source and title
+    function updateVideo(src, title) {
+        const video = document.getElementById('main-video');
+        const source = document.getElementById('video-source');
+        const videoTitle = document.getElementById('video-title');
+
+        source.src = src;
+        video.load(); // Reload video with the new source
+        videoTitle.textContent = title;
+    }
+</script>
 
 <!-- Sensor setup  -->
-<section class="section hero is-light">
+<!-- <section class="section hero is-light">
     <div class="container is-max-desktop">
         <div class="columns">
             <div class="column is-centered has-text-centered">
@@ -137,7 +142,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- End sensor setup -->
 
 
