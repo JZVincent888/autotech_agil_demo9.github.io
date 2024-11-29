@@ -107,6 +107,19 @@
             </div>
 
             <!-- Video display area -->
+
+            <div id="stream-container" class="has-text-centered" style="margin-top: 20px;">
+                <iframe id="rviz-stream" 
+                        src="http://localhost:11311" 
+                        frameborder="0" 
+                        allowfullscreen 
+                        style="width: 100%; height: 500px; max-width: 800px;">
+                </iframe>
+                <h2 id="stream-title" class="subtitle has-text-centered" style="margin-top: 10px;">
+                    Live RViz visualization: TUM-AIR.
+                </h2>
+            </div>
+
             <div id="video-container" class="has-text-centered" style="margin-top: 20px;">
                 <video id="main-video" controls class="video-responsive" style="max-width: 80%; height: auto;">
                     <source id="video-source" src="static/videos/2_output.mp4" type="video/mp4">
@@ -123,11 +136,16 @@
 
 <script>
     // JavaScript to handle button clicks
+
+    // document.getElementById('btn-tum-air').addEventListener('click', function () {
+    //     updateVideo(
+    //         "static/videos/2_output.mp4", 
+    //         "Visualization of the <a href='https://www.ce.cit.tum.de/air/research/autotechagil/' target='_blank'>TUM-AIR</a> test field in Garching bei München: <a href='https://innovation-mobility.com/projekt-providentia/' target='_blank'>https://innovation-mobility.com/projekt-providentia/</a>."
+    //     );
+    // });
+
     document.getElementById('btn-tum-air').addEventListener('click', function () {
-        updateVideo(
-            "static/videos/2_output.mp4", 
-            "Visualization of the <a href='https://www.ce.cit.tum.de/air/research/autotechagil/' target='_blank'>TUM-AIR</a> test field in Garching bei München: <a href='https://innovation-mobility.com/projekt-providentia/' target='_blank'>https://innovation-mobility.com/projekt-providentia/</a>."
-        );
+        updateStream("http://localhost:11311", "Visualization of the <a href='https://www.ce.cit.tum.de/air/research/autotechagil/' target='_blank'>TUM-AIR</a> test field in Garching bei München: <a href='https://innovation-mobility.com/projekt-providentia/' target='_blank'>https://innovation-mobility.com/projekt-providentia/</a>.");
     });
 
     document.getElementById('btn-uulm-mrm').addEventListener('click', function () {
@@ -153,6 +171,14 @@
         source.src = src;
         video.load(); // Reload video with the new source
         videoTitle.innerHTML = title; // Use innerHTML to support HTML in the title
+    }
+
+    function updateStream(src, title) {
+    const iframe = document.getElementById('rviz-stream');
+    const streamTitle = document.getElementById('stream-title');
+
+    iframe.src = src; // Update the iframe's source URL
+    streamTitle.textContent = title;
     }
 </script>
 
