@@ -81,7 +81,7 @@
                 <!-- Row for Image3 and Image4 -->
                 <div class="logo-row" style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
                     <img src="static/images/autotech_agil.png" alt="Logo 1" style="width: 300px; height: 80px;">
-                    <img src="static/images/BMBF.png" alt="Logo 2" style="width: 400px; height: 150px;">
+                    <img src="static/images/BMBF.png" alt="Logo 2" style="width: 400px; height: 180px;">
                 </div>
 
                 <!-- Empty Row (Spacer) -->
@@ -120,7 +120,7 @@
                 </h2>
             </div>
 
-            <div id="video-container" class="has-text-centered" style="margin-top: 20px;">
+            <!-- <div id="video-container" class="has-text-centered" style="margin-top: 20px;">
                 <video id="main-video" controls class="video-responsive" style="max-width: 80%; height: auto;">
                     <source id="video-source" src="static/videos/2_output.mp4" type="video/mp4">
                     Your browser does not support the video tag.
@@ -128,7 +128,7 @@
                 <h2 id="video-title" class="subtitle has-text-centered" style="margin-top: 10px;">
                     Visualization of the TUM-AIR test field in Garching bei München.
                 </h2>
-            </div>
+            </div> -->
 
         </div>
     </div>
@@ -145,7 +145,7 @@
     // });
 
     document.getElementById('btn-tum-air').addEventListener('click', function () {
-        updateStream("http://localhost:11311", "Visualization of the <a href='https://www.ce.cit.tum.de/air/research/autotechagil/' target='_blank'>TUM-AIR</a> test field in Garching bei München: <a href='https://innovation-mobility.com/projekt-providentia/' target='_blank'>https://innovation-mobility.com/projekt-providentia/</a>.");
+        updateStream("http://localhost:44823", "Visualization of the <a href='https://www.ce.cit.tum.de/air/research/autotechagil/' target='_blank'>TUM-AIR</a> test field in Garching bei München: <a href='https://innovation-mobility.com/projekt-providentia/' target='_blank'>https://innovation-mobility.com/projekt-providentia/</a>.");
     });
 
     document.getElementById('btn-uulm-mrm').addEventListener('click', function () {
