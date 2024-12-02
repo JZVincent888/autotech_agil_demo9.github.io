@@ -1,7 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+<link rel="stylesheet" href="static/css/bulma.min.css">
+<link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+<link rel="stylesheet" href="static/css/index.css">
 
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="static/js/index.js"></script>
+<style>
+/* Ensure the body fits the content */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Scale container to fit the viewport */
+#scale-container {
+  transform-origin: top left;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Adjust spacing between title and images */
+.hero-body {
+  padding-bottom: 0;
+}
+
+.logo-rows {
+  margin-top: 0;
+}
+
+.logo-row img {
+  margin: 0;
+}
+
+video {
+  border: 2px solid black;
+  width: 58%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure all content fits within the viewport */
+.hero {
+  margin-bottom: 0;
+}
+
+.buttons {
+  margin-bottom: 0;
+}
+
+.logo-row img {
+  background: none; /* Ensures no background color */
+}
+
+</style>
+</head>
+
+<body>
+<div id="scale-container">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered is-vcentered" style="display: flex; align-items: center; justify-content: center; gap: 50px;">
+          <!-- Left Image -->
+          <img src="static/images/autotech_agil.png" alt="Logo 1" style="width: 210px; height: 55px; background: none;">
+          
+          <!-- Title -->
+          <h1 class="title is-4 publication-title" style="font-size: 1.9rem; font-weight: bold; text-align: center;">
+            AUTOtech.agil Demonstration 9: Test Fields
+          </h1>
+          
+          <!-- Right Image -->
+          <img src="static/images/BMBF.png" alt="Logo 2" style="width: 270px; height: 140px; background: none;">
+        </div>
+      </div>
+    </div>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+
+        <!-- <div class="logo-rows" style="margin-top: 20px;">
+          <div class="logo-row" style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <img src="static/images/autotech_agil.png" alt="Logo 1" style="width: 210px; height: 55px;"> 
+            <img src="static/images/BMBF.png" alt="Logo 2" style="width: 260px; height: 130px;">
+          </div> -->
+
+          <div class="logo-row" style="display: flex; justify-content: center; align-items: center;">
+            <img src="static/images/tumair.png" alt="Logo 3" style="width: 400px; height: 75px; background: none;">
+            <img src="static/images/uulm.png" alt="Logo 4" style="width: 300px; height: 80px; background: none;">
+            <img src="static/images/rwth.png" alt="Logo 5" style="width: 300px; height: 50px; background: none;">
+          </div>
+        </div>
+
+        <div class="empty-row" style="height: 20px;"></div>
+
+        <div class="buttons has-text-centered" style="display: flex; justify-content: center; gap: 10px;">
+          <button id="btn-tum-air" class="button is-primary">TUM-AIR</button>
+          <button id="btn-uulm-mrm" class="button is-link">UULM-MRM</button>
+          <button id="btn-rwth-ika" class="button is-success">RWTH-IKA</button>
+        </div>
+
+        <video id="videoStream" controls autoplay></video>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+const video = document.getElementById('videoStream');
+
+// Function to load and play HLS streams
+function loadStream(videoSrc) {
+  if (Hls.isSupported()) {
+    const hls = new Hls();
+    hls.loadSource(videoSrc);
+    hls.attachMedia(video);
+  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = videoSrc;
+  } else {
+    console.error('Browser does not support HLS playback.');
+  }
+}
+
+// Button click handlers
+document.getElementById('btn-tum-air').addEventListener('click', () => {
+  loadStream('http://localhost:8080/hls/stream.m3u8');
+});
+
+document.getElementById('btn-uulm-mrm').addEventListener('click', () => {
+  loadStream('http://localhost:8080/hls/stream.m3u8');
+});
+
+document.getElementById('btn-rwth-ika').addEventListener('click', () => {
+  loadStream('http://localhost:8080/hls/stream.m3u8');
+});
+</script>
+
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
 <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 <link rel="stylesheet" href="static/css/bulma.min.css">
 <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
@@ -9,110 +168,163 @@
 
 <script src="static/js/index.js"></script>
 <style>
+/* Ensure the body fits the content */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Scale container to fit the viewport */
+#scale-container {
+  transform-origin: top left;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Adjust spacing between title and images */
 .hero-body {
-  padding-bottom: 0.5px; /* Reduced bottom padding for the title section */
+  padding-bottom: 0;
 }
 
 .logo-rows {
-  margin-top: 0.5px; /* Reduced spacing between the title and the first image row */
+  margin-top: 0;
 }
 
 .logo-row img {
-  margin: 1px; /* Optional: Adjust spacing between images */
+  margin: 3px;
 }
 
 video {
   border: 2px solid black;
-  width: 80%;
+  width: 100%;
   height: auto;
   display: block;
   margin: 20px auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure all content fits within the viewport */
+.hero {
+  margin-bottom: 0;
+}
+
+.buttons {
+  margin-bottom: 0;
 }
 </style>
 </head>
 
 <body>
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-            <h1 class="title is-4 publication-title" style="font-size: 2.5rem; font-weight: bold;">AUTOtech.agil Demonstration 9: Test Fields</h1>
+<div id="scale-container">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+              <h1 class="title is-4 publication-title" style="font-size: 2.5rem; font-weight: bold;">AUTOtech.agil Demonstration 9: Test Fields</h1>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
 
-      <div class="logo-rows" style="margin-top: 20px;">
-        <div class="logo-row" style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
-          <img src="static/images/autotech_agil.png" alt="Logo 1" style="width: 210px; height: 55px;"> 
-          <img src="static/images/BMBF.png" alt="Logo 2" style="width: 260px; height: 130px;">
+        <div class="logo-rows" style="margin-top: 20px;">
+          <div class="logo-row" style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <img src="static/images/autotech_agil.png" alt="Logo 1" style="width: 210px; height: 55px;"> 
+            <img src="static/images/BMBF.png" alt="Logo 2" style="width: 260px; height: 130px;">
+          </div>
+
+          <div class="logo-row" style="display: flex; justify-content: center; align-items: center;">
+            <img src="static/images/tumair.png" alt="Logo 3" style="width: 400px; height: 75px;">
+            <img src="static/images/uulm.png" alt="Logo 4" style="width: 300px; height: 80px;">
+            <img src="static/images/rwth.png" alt="Logo 5" style="width: 300px; height: 50px;">
+          </div>
         </div>
 
-        <!-- <div class="mpty-rowe" style="height: 20px;"></div> -->
+        <div class="empty-row" style="height: 20px;"></div>
 
-        <div class="logo-row" style="display: flex; justify-content: center; align-items: center;">
-          <img src="static/images/tum.png" alt="Logo 3" style="width: 500px; height: 50px;">
-          <img src="static/images/ulm.png" alt="Logo 4" style="width: 300px; height: 80px;">
-          <img src="static/images/rwth.png" alt="Logo 5" style="width: 300px; height: 50px;">
+        <div class="buttons has-text-centered" style="display: flex; justify-content: center; gap: 10px;">
+          <button id="btn-tum-air" class="button is-primary">TUM-AIR</button>
+          <button id="btn-uulm-mrm" class="button is-link">UULM-MRM</button>
+          <button id="btn-rwth-ika" class="button is-success">RWTH-IKA</button>
         </div>
+
+        <video id="screenVideo" autoplay muted></video>
+
       </div>
-
-      <div class="empty-row" style="height: 20px;"></div>
-
-      <!-- Buttons to select video -->
-      <div class="buttons has-text-centered" style="display: flex; justify-content: center; gap: 10px;">
-        <button id="btn-tum-air" class="button is-primary">TUM-AIR</button>
-        <button id="btn-uulm-mrm" class="button is-link">UULM-MRM</button>
-        <button id="btn-rwth-ika" class="button is-success">RWTH-IKA</button>
-      </div>
-
-      <!-- Video Element for Screen Stream -->
-      <video id="screenVideo" autoplay muted></video>
-
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <script>
-const videoElement = document.getElementById('screenVideo');
-const tumAirButton = document.getElementById('btn-tum-air');
+const scaleContainer = document.getElementById('scale-container');
 
-// Function to start screen capture
-async function startScreenCapture() {
-  try {
-    const screenStream = await navigator.mediaDevices.getDisplayMedia({
-      video: { cursor: "always" },
-      audio: false
-    });
+// Function to resize content to fit viewport
+function resizeContent() {
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
 
-    videoElement.srcObject = screenStream;
+  // Get the original dimensions of the content
+  const contentWidth = scaleContainer.offsetWidth;
+  const contentHeight = scaleContainer.offsetHeight;
 
-    // Programmatically mute the video and play
-    videoElement.muted = true;
-    await videoElement.play();
+  // Calculate the scaling factor
+  const scaleX = windowWidth / contentWidth;
+  const scaleY = windowHeight / contentHeight;
+  const scale = Math.min(scaleX, scaleY);
 
-    // Alert when the stream ends
-    screenStream.getVideoTracks()[0].addEventListener('ended', () => {
-      alert('Screen capture has ended');
-    });
-  } catch (err) {
-    console.error("Error capturing screen:", err);
-    alert("Failed to capture screen: " + err.message);
-  }
+  // Apply the scaling
+  scaleContainer.style.transform = `scale(${scale})`;
 }
 
-// Attach click event to the TUM-AIR button
-tumAirButton.addEventListener('click', startScreenCapture);
+// Call resizeContent when the window is resized
+window.addEventListener('resize', resizeContent);
+
+// Initial call to fit content
+resizeContent();
+
+const tumAirButton = document.getElementById('btn-tum-air');
+const uulmMrmButton = document.getElementById('btn-uulm-mrm');
+const rwthIkaButton = document.getElementById('btn-rwth-ika');
+const videoElement = document.getElementById('screenVideo');
+
+// Functions to set the video source for each RViz stream
+function showTumAirStream() {
+  videoElement.src = 'rtmp://localhost/live/tum-air'; // Stream URL for TUM-AIR: http://localhost:8080/live-tum-air
+  videoElement.play();
+}
+
+function showUulmMrmStream() {
+  videoElement.src = 'http://localhost:8080/live-uulm-mrm'; // Stream URL for UULM-MRM
+  videoElement.play();
+}
+
+function showRwthIkaStream() {
+  videoElement.src = 'http://localhost:8080/live-rwth-ika'; // Stream URL for RWTH-IKA
+  videoElement.play();
+}
+
+// Attach click events to buttons
+tumAirButton.addEventListener('click', showTumAirStream);
+uulmMrmButton.addEventListener('click', showUulmMrmStream);
+rwthIkaButton.addEventListener('click', showRwthIkaStream);
 </script>
 
 </body>
-</html>
+</html> -->
