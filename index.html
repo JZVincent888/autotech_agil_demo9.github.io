@@ -76,7 +76,7 @@ video {
           
           <!-- Title -->
           <h1 class="title is-4 publication-title" style="font-size: 1.9rem; font-weight: bold; text-align: center;">
-            AUTOtech.agil Demonstration 9: Test Fields
+            autotech.agil Demonstration 9: Test Fields
           </h1>
           
           <!-- Right Image -->
@@ -118,22 +118,24 @@ video {
 // Function to load and play HLS streams
 function loadStream(videoElement, videoSrc) {
   if (Hls.isSupported()) {
-    const hls = new Hls();
-    hls.loadSource(videoSrc);
-    hls.attachMedia(videoElement);
-    videoElement.play();
-  } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
-    videoElement.src = videoSrc;
-    videoElement.play();
-  } else {
-    console.error('Browser does not support HLS playback.');
+  const hls1 = new Hls({ maxBufferLength: 30, maxMaxBufferLength: 60 });
+  hls1.loadSource('http://localhost:8080/hls/stream1.m3u8');
+  hls1.attachMedia(document.getElementById('videoStream1'));
+
+  const hls2 = new Hls({ maxBufferLength: 30, maxMaxBufferLength: 60 });
+  hls2.loadSource('http://localhost:8080/hls/stream2.m3u8');
+  hls2.attachMedia(document.getElementById('videoStream2'));
+
+  const hls3 = new Hls({ maxBufferLength: 30, maxMaxBufferLength: 60 });
+  hls3.loadSource('http://localhost:8080/hls/stream3.m3u8');
+  hls3.attachMedia(document.getElementById('videoStream3'));
   }
 }
 
 // Load streams for all videos
-loadStream(document.getElementById('videoStream1'), 'http://localhost:8080/hls/stream.m3u8');
-loadStream(document.getElementById('videoStream2'), 'http://localhost:8080/hls/stream.m3u8');
-loadStream(document.getElementById('videoStream3'), 'http://localhost:8080/hls/stream.m3u8');
+loadStream(document.getElementById('videoStream1'), 'http://localhost:8080/hls/stream1.m3u8');
+loadStream(document.getElementById('videoStream2'), 'http://localhost:8080/hls/stream2.m3u8');
+loadStream(document.getElementById('videoStream3'), 'http://localhost:8080/hls/stream3.m3u8');
 </script>
 
 </body>
